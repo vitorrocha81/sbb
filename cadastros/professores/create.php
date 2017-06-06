@@ -28,7 +28,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <?php include '../../libs/load_libs.php'; ?>
+     <?php include '../../load_libs.php'; ?>
 </head>
  
 <body>

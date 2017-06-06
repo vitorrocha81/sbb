@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>PDO - Read Records - PHP CRUD Tutorial</title>
-   <?php include '../../libs/load_libs.php'; ?>
+   <?php include '../../load_libs.php'; ?>
  
 </head>
 <body>

@@ -4,7 +4,7 @@
     <title>PDO - Read One Record - PHP CRUD Tutorial</title>
  
   
-    <?php include '../../libs/load_libs.php'; ?>
+ <?php include '../../load_libs.php'; ?>
 
 </head>
 <body>

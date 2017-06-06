@@ -3,7 +3,7 @@
 <head>
     <title>Atualizar dadados do  professor</title>
      
-   <?php include '../../libs/load_libs.php'; ?>
+  <?php include '../../load_libs.php'; ?>
 
          
 </head>
