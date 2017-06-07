@@ -3,9 +3,7 @@
 <head>
     <title>PDO - Read One Record - PHP CRUD Tutorial</title>
  
-  
- <?php include '../../load_libs.php'; ?>
-
+    <?php include '../load_libs.php'; ?>
 </head>
 <body>
  
@@ -20,7 +18,7 @@
         <?php
          
         //include database connection
-        include '../../config/database.php';
+        include '../config/database.php';
           $id = null;
               if ( !empty($_GET['id'])) {
                   $id = $_REQUEST['id'];

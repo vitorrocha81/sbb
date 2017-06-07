@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>PDO - Read Records - PHP CRUD Tutorial</title>
-   <?php include '../../load_libs.php'; ?>
+    <?php include '../load_libs.php'; ?>
  
 </head>
 <body>
@@ -30,7 +30,7 @@
                      </thead>
                      <tbody>
                      <?php
-                      include '../../config/database.php';
+                      include '../config/database.php';
                       $pdo = Database::connect();
                       $sql = 'SELECT * FROM professores ORDER BY id DESC';
                       foreach ($pdo->query($sql) as $row) {

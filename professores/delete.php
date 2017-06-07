@@ -1,6 +1,6 @@
 <?php
     //include database connection
-    include '../../config/database.php';
+    include '../config/database.php';
     $id = 0;
      
     if ( !empty($_GET['id'])) {
@@ -27,7 +27,7 @@
 <html lang="pt_BR">
 <head>
     <meta charset="utf-8">
-     <?php include '../../load_libs.php'; ?>
+         <?php include '../load_libs.php'; ?>
 </head>
  
 <body>

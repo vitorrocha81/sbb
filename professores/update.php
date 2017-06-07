@@ -3,7 +3,7 @@
 <head>
     <title>Atualizar dadados do  professor</title>
      
-  <?php include '../../load_libs.php'; ?>
+    <?php include '../load_libs.php'; ?>
 
          
 </head>
@@ -20,14 +20,14 @@
 // isset() is a PHP function used to verify if a value is there or not
  
 //include database connection
-include 'config/database.php';
+include '../config/database.php';
 $id = null;
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
      
     if ( null==$id ) {
-        header("Location: read.php");
+        header("Location: index.php");
     }
      
     if ( !empty($_POST)) {
@@ -50,7 +50,7 @@ $id = null;
             $q = $pdo->prepare($sql);
             $q->execute(array($nome,$disciplina,$email,$telefone,$celular,$id));
             Database::disconnect();
-            header("Location: read.php");
+            header("Location: index.php");
         
     } else {
         $pdo = Database::connect();

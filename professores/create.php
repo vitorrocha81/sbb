@@ -1,6 +1,6 @@
 <?php
      
-    include '../../config/database.php';
+    include '../config/database.php';
  
     if ( !empty($_POST)) {
         // keep track validation errors
@@ -9,8 +9,7 @@
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
-         
-     
+              
         // insert data
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,8 +17,7 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($nome,$email,$telefone));
             Database::disconnect();
-            header("Location: read.php");
-        
+            header("Location: index.php");
     }
 ?>
 
@@ -28,7 +26,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-     <?php include '../../load_libs.php'; ?>
+     <?php include '../load_libs.php'; ?>
 </head>
  
 <body>
@@ -64,11 +62,11 @@
                       </div>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-success">Cadastrar</button>
-                          <a class="btn" href="read.php">Voltar</a>
+                          <a class="btn" href="index.php">Voltar</a>
                         </div>
                     </form>
                 </div>
                  
     </div> <!-- /container -->
   </body>
-</html>E
+</html>
