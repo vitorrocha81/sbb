@@ -9,25 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>SBB LANGUAGES</title>
-
-
 </head>
 
 <body>
-     <div id="wrapper">
-    <?php include 'shared/top_navigation.php' ?>
 
-   
-    <?php include 'shared/sidebar.php' ?>
+    <div id="wrapper">
+        <?php include 'shared/top_navigation.php' ?>
+        <?php include 'shared/sidebar.php' ?>
+    <div id="page-wrapper">    
+        <?php include 'home.php'; ?>
+    </div>
 
-       <div id="page-wrapper">
-  
-    
-    <?php include 'home.php'; ?>
-    
-       </div> 
 </body>
 
 </html>

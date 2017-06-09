@@ -62,6 +62,12 @@
                <td><?php echo $data['disciplina'];?></td>
            </tr>
            <tr>
+               <td>Hora/Aula</td>
+               <td><?php echo $hora_aula = ' R$ ' . number_format($data['hora_aula'], 2, ',', '.');;?></td>
+           </tr>
+
+           
+           <tr>
                <td></td>
                <td>
                    <a href='read.php' class='btn btn-danger'>Ver todos os professores</a>
