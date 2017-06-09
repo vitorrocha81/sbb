@@ -35,3 +35,23 @@ INSERT INTO `professores` (`id`, `nome`, `disciplina`, `email`, `telefone`, `cel
 (8, 'prrofessor 8', 'ingles', 'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
 (9, 'prrofessor 9', 'ingles', 'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
 (10, 'prrofessor 10', 'ingles', 'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+
+
+
+INSERT INTO `alunos` (`id`, `nome`, `email`, `telefone`, `celular`, `created`, `modified`) VALUES
+('', 'prrofessor 1',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 2',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 3',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 4',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 5',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 6',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 7',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 8',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 9',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+('', 'prrofessor 10',  'professor1@gmail.com', '(11)954849281', '1141130853', '2015-08-02 12:04:03', '2015-08-06 06:59:18');
+
+
+ALTER TABLE `alunos` ADD `nivel_id` INT( 2 ) NOT NULL ,
+ADD `idioma_id` INT( 2 ) NOT NULL ,
+ADD `valor_hora` DECIMAL( 8, 2 ) NOT NULL DEFAULT '0.00';
+AADD `aulas_mes` INT( 2 ) NOT NULL DEFAULT '0';

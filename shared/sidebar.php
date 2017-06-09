@@ -16,17 +16,43 @@
                             <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                            <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Professores<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Professores<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo $base_url ?>professores/index.php"><i class="fa fa-user fa-fw"></i> Professores</a>
+                                    <a href="<?php echo $base_url ?>professores/index.php"><i class="fa fa-users fa-fw"></i> Professores</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $base_url ?>professores/create.php"><i class="fa fa-user fa-fw"></i> Cadastrar Professor</a>
+                                    <a href="<?php echo $base_url ?>professores/create.php"><i class="fa fa-user-group fa-fw"></i> Cadastrar Professor</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                           <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Alunos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo $base_url ?>alunos/index.php"><i class="fa fa-user fa-fw"></i> Alunos</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url ?>alunos/create.php"><i class="fa fa-user fa-fw"></i> Cadastrar Aluno</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                           <li>
+                            <a href="#"><i class="fa  fa-sticky-note fa-fw"></i> AULAS / MÊS<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo $base_url ?>aulas_mes/index.php"><i class="fa  fa-sticky-note  fa-fw"></i> Aulas do mês</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url ?>aulas_mes/create.php"><i class="fa  fa-sticky-note  fa-fw"></i> Nova Aula </a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
 
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
