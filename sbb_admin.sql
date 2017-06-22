@@ -55,3 +55,15 @@ ALTER TABLE `alunos` ADD `nivel_id` INT( 2 ) NOT NULL ,
 ADD `idioma_id` INT( 2 ) NOT NULL ,
 ADD `valor_hora` DECIMAL( 8, 2 ) NOT NULL DEFAULT '0.00';
 AADD `aulas_mes` INT( 2 ) NOT NULL DEFAULT '0';
+
+
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
