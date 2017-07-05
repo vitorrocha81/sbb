@@ -1,4 +1,30 @@
-<!DOCTYPE html>
+<?php
+/**
+ * Tutorial: PHP Login Registration system
+ *
+ * Page : Profile
+ */
+
+// Start Session
+session_start();
+
+// check user login
+if(empty($_SESSION['sess_user_id']))
+{
+    header("Location: index.php");
+}
+
+// Database connection
+require '../database.php';
+$db = DB();
+
+// Application library ( with DemoLib class )
+require '../lib/library.php';
+$app = new DemoLib();
+
+$user = $app->UserDetails($_SESSION['sess_user_id']); // get user details
+
+?>
 <html lang="en">
 
 <head>
@@ -49,6 +75,8 @@
             <div class="page-header">
                 <h1>NOVA AULA </h1>
             </div>
+           <h3>Hello <?php echo $user->name ?>,</h3>
+            <?php echo $user->email ?>,</h3>
 <?php
      
     include '../config/database.php';
@@ -57,14 +85,15 @@
         // keep track validation errors
      
         // keep track post values
-        $nome = $_POST['aluno_id'];
-        $email = $_POST['professor_id'];
-        $telefone = $_POST['materia'];
+        $aluno_id = $_POST['aluno_id'];
+        $professor_id = $_POST['professor_id'];
+        $materia = $_POST['materia'];
+        $data = $_POST['data'];
               
         // insert data
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO aulas_mes (aluno_id,professor_id,materia) values(?, ?, ?)";
+            $sql = "INSERT INTO aulas_mes (aluno_id,professor_id,materia,data) values(?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
             $q->execute(array($aluno_id,$professor_id,$materia));
             Database::disconnect();
