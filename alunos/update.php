@@ -61,11 +61,15 @@ $id = null;
     if ( !empty($_POST)) {
      
         // keep track post values
+      $professores = is_array($_POST['professores'])
+        ? implode(', ', $_POST['professores'])
+        : $_POST['professores'];
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $celular = $_POST['celular'];
-        $disciplina = $_POST['disciplina'];
+        $nivel = $_POST['nivel_id'];
+        $disciplina = $_POST['idioma_id'];
         $valor_hora = $_POST['valor_hora'];
         
 
@@ -73,9 +77,10 @@ $id = null;
         
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE alunos  set nome = ?, email = ?, telefone = ?, celular = ?, valor_aula = ? WHERE id = ?";
+            $sql = "UPDATE alunos  set nome = ?, email = ?, telefone = ?, celular = ?, 
+            idioma_id = ?, valor_aula = ? WHERE id = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($nome,  $email,$telefone,$celular,
+            $q->execute(array($professores, $nome,  $email,$telefone,$celular,$idioma_id,
                         ($valor_hora = str_replace(',','.',$valor_hora)), $id));
             Database::disconnect();
         
@@ -90,6 +95,8 @@ $id = null;
         $email = $data['email'];
         $telefone = $data['telefone'];
         $celular = $data['celular'];
+        $nivel = $_POST['nivel_id'];
+        $idioma = $_POST['idioma_id'];
         $valor_hora = $data['valor_hora'];
         $aulas_mes = $data['aulas_mes'];
         Database::disconnect();
@@ -98,21 +105,36 @@ $id = null;
 ?>
         <!--we have our html form here where new user information will be entered-->
        <form action="update.php?id=<?php echo $id?>" method="post">
+          <div clas="col-md-12">
+            <h1>Professor do aluno</h1>
+            <select name="prrofessores[]" id="prrofessores[]">
+            <?php
+            $pdo = Database::connect();
+            $sql = "SELECT * FROM professores ORDER BY id";
+            foreach ($pdo->query($sql) as $row) {
+            echo "<option value='".$row['id']."'>".$row['nome']."</option>";
+            }
+            Database::disconnect();
+            ?>
+            </select>
+          </td>  
+            
+          </div>
            <table class='table table-hover table-responsive table-bordered'>
                <tr>
-                   <td>nome</td>
+                   <td>Nome</td>
                    <td> <input name="nome" type="text"  placeholder="Nome do professorr" value="<?php echo !empty($nome)?$nome:'';?>"></td>
                </tr>
                <tr>
-                   <td>email</td>
+                   <td>Email</td>
                    <td><input type="text" name='email' class='form-control' value="<?php echo !empty($email)?$email:'';?>"></td>
                </tr>
                <tr>
-                   <td>telefone</td>
+                   <td>Telefone</td>
                    <td><input type='text' name='telefone' class='form-control' value="<?php echo !empty($telefone)?$telefone:'';?>"></td>
                </tr>
               <tr>
-                  <td>celular</td>
+                  <td>Celular</td>
                   <td><input type='text' name='celular' class='form-control' value="<?php echo !empty($celular)?$celular:'';?>"></td>
               </tr>
               <tr>
@@ -120,21 +142,35 @@ $id = null;
                   <td><input type='text' name='celular' class='form-control' value="<?php echo !empty($aulas_mes)?$aulas_mes:'';?>"></td>
               </tr>
               <tr>
-                  <td>N[IVEL</td>
+                  <td>NÍVEL</td>
                   <td>
-                    <input name="radio" type="radio" value="BÁSICO">BÁSICO
-                    <input name="radio" type="radio" value="INTERMEDIÁRIO">INTERMEDIÁRIO
-                    <input name="radio" type="radio" value="AVANÇADO">AVANÇADO
+                    <select name="nivel_id" id="nivel_id">
+                    <?php
+                    $pdo = Database::connect();
+                    $sql = "SELECT * FROM niveis ORDER BY id";
+                    foreach ($pdo->query($sql) as $row) {
+                    echo "<option value='".$row['id']."'>".utf8_encode($row['nivel'])."</option>";
+                    }
+                    Database::disconnect();
+                    ?>
+                    </select>
                   </td>
               </tr>
 
               <tr>
                 <td> DISCIPLINAS:</td>
                 <td> 
-                  <input name="checkbox" type="checkbox" value="1">INGLÊS
-                  <input name="checkbox" type="checkbox" value="2">ESPANHOL
-                  <input name="checkbox" type="checkbox" value="3">ALEMÃO
-                  <input name="checkbox" type="checkbox" value="4">FRANCÊS
+                  <select name="idioma_id" id="idioma_id">
+                  <?php
+                  $pdo = Database::connect();
+                  $sql = "SELECT * FROM idiomas ORDER BY id";
+                  foreach ($pdo->query($sql) as $row) {
+                  echo "<option value='".$row['id']."'>".utf8_encode($row['idioma'])."</option>";
+
+                  }
+                  Database::disconnect();
+                  ?>
+                  </select>
                 </td>
               </tr>
               <tr>

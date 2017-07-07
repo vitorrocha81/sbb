@@ -14,7 +14,7 @@
 
 	}
 	
-	echo $username ." : ".$password;
+	// echo $username ." : ".$password;
 
   	$pdo = Database::connect();
 
@@ -35,19 +35,19 @@
         $_SESSION['sess_userrole'] = $row['role'];
 
         echo $_SESSION['sess_userrole'];
-		session_write_close();
-
-		switch ($_SESSION['sess_userrole']) {
-		    case admin:
-		        header('Location: admin_index.php');
-		        break;
-		    case aluno:
-		        header('Location: profile.php');
-		        break;
-		    case professor:
-		        header('Location: userhome.php');
-		        break;
-		}
+		// session_write_close();
+		header('Location: admin_index.php');
+		// switch ($_SESSION['sess_userrole']) {
+		//     case admin:
+		//         header('Location: admin_index.php');
+		//         break;
+		//     case aluno:
+		//         header('Location: profile.php');
+		//         break;
+		//     case professor:
+		//         header('Location: userhome.php');
+		//         break;
+		// }
 		
 	}
 

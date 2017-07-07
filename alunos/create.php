@@ -1,28 +1,16 @@
 <?php
      
-    include '../config/database.php';
- 
-    if ( !empty($_POST)) {
-        // keep track validation errors
-     
-        // keep track post values
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-              
-        // insert data
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO professores (nome,email,telefone) values(?, ?, ?)";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($nome,$email,$telefone));
-            Database::disconnect();
-            header("Location: index.php");
-    }
+  
+// Database connection
+require __DIR__ . '/../database.php';
+$db = DB();
+
+// Application library ( with DemoLib class )
+require __DIR__ . '/../lib/library.php';
+$app = new DemoLib();
+
+$user = $app->UserDetails($_SESSION['sess_user_id']); // get user details
 ?>
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">

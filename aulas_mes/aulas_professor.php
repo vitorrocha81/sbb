@@ -41,29 +41,43 @@
         <?php include '../shared/sidebar.php' ?>
     <div id="page-wrapper">    
             <div class="page-header">
-                <h1>Alunos cadastrados</h1>
+                <h1>Relatório mensal do professor</h1>
             </div>
 
-            <?php
-             echo "<a href='create.php' class='btn btn-primary m-b-1em'>Cadastrar professor</a>";
-            // include database connection
-          ?>
 
           <div class="row">
                        <table class="table table-striped table-bordered">
                          <thead>
                            <tr>
                              <th>Professor</th>
-                             <th>Disciplina</th>
+                             <th>matéria do dia</th>
                              <th>Dia da aula</th>
-                             <th>Matéria</th>
+                             <th>Valor hora</th>
+
                            </tr>
                          </thead>
                          <tbody>
                          <?php
                           include '../config/database.php';
                           $pdo = Database::connect();
-                          $sql = 'SELECT * from aulas_mes as a INNER JOIN professores as p on a.professor_id = p.id';
+                          $id = $_GET['id'];
+                          $sql = "SELECT * FROM aulas_mes a
+                            INNER JOIN professores p ON (p.id = a.professor_id)
+                            WHERE a.professor_id = '$id'";
+
+                            $sth = $pdo->query($sql);
+                            print "Total de aulas: ".$sth->rowCount()."<br>";
+
+
+                          $soma = $pdo->query("SELECT SUM(hora_aula) AS total_aulas FROM aulas_mes a
+                            INNER JOIN professores p ON (p.id = a.professor_id)
+                            WHERE a.professor_id = '$id'")->fetchColumn();
+
+                          // Imprimindo o resultado.
+
+                                                   
+                          print '<div class="btn btn-warning">Total a receber: R$ '.$soma.' </a>';
+                          
                           foreach ($pdo->query($sql) as $row) {
                                    echo '<tr>';
                                    echo '<td>'. $row['nome'] . '</td>';
@@ -73,12 +87,13 @@
                                  echo '<td width=auto>';
                                                                  echo '<a class="btn btn-info" href="read_one.php?id='.$row['id'].'">Ver</a>';
                                                                  echo ' ';
-                                                                 echo '<a class="btn btn-success" href="aulas_professor.php?id='.$row['professor_id'].'">Atualizar</a>';
+                                                                 echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Atualizar</a>';
                                                                  echo ' ';
                                                                  echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">X</a>';
                                                                  echo '</td>';
                                    echo '</tr>';
                           }
+
                           Database::disconnect();
                          ?>
                          </tbody>
